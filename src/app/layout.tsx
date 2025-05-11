@@ -12,6 +12,7 @@ const geistSans = Geist({
 });
 import SheetComp from "@/components/SheetComp";
 import { CreatedocumentProvider } from "@/components/context/newdocumentprovider";
+import UserAcc from "@/components/context/User";
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -34,8 +35,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Provider>
+          <UserAcc />
           <Header />
-     <CreatedocumentProvider>
+          <CreatedocumentProvider>
             <SidebarProvider>
               <div className="flex flex-row">
                 <SheetComp />

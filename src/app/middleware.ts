@@ -10,12 +10,12 @@ export async function middleware(request: NextRequest) {
     secret: process.env.NEXTAUTH_SECRET 
   });
 
+
   const { pathname } = request.nextUrl;
  
 
   // Check login path first
   if (pathname == "/login") {
-  
     if (token) {
       console.log("User is authenticated, redirecting to home");
       return NextResponse.redirect(new URL("/", request.url));
@@ -37,6 +37,7 @@ export async function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
+    "/login",
     /*
      * Match all request paths except for the ones starting with:
      * - api (API routes)

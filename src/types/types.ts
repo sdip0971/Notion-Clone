@@ -24,5 +24,13 @@ export interface UserDocument {
   content: string;
   createdAt: Date;
   updatedAt: Date;
+
+}
+export interface roomDocument {
+  id: string;
+  userID: string;
+  role: "owner" | "editor" | "viewer";
+  createdAt: Date;
+  roomId: string;
 }
 export type DocumnetId = string | undefined;

@@ -30,6 +30,12 @@ export async function  createDocument(userid:string): Promise<{DocumentId: strin
       updatedAt: new Date(),
     
     });
-    return { DocumentId: docref.id}; 
+    await admindb.collection("users").doc(userid).collection("rooms").doc(docref.id).set({
+     userID: userid,
+     role:"owner",
+     createdAt: new Date(),
+     roomId:docref.id
+})
+  return { DocumentId: docref.id };
 }
 
