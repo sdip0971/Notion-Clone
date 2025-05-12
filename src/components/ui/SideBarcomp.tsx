@@ -68,7 +68,7 @@ function SideBarcomp() {
   const [isUserFetched, setIsUserFetched] = useState(false);
   console.log("User:", user);
 
-  // Track when the user is fetched
+
   const queryRef = user
     ? query(collectionGroup(db, "rooms"), where("userID", "==", user.id))
     : null;
