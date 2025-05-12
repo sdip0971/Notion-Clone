@@ -43,7 +43,7 @@ export const CreatedocumentProvider = ({
           throw new Error("Document ID is not defined");
         }
 
-        // Navigate to the new document
+
         router.push(`/document/${DocumentId}`);
       } catch (error: any) {
         console.error("Error in createdocument:", error);

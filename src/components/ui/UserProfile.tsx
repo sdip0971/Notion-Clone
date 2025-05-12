@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { signOut } from "next-auth/react";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 interface UserProfileProps {
   user?: {
@@ -25,7 +26,7 @@ export default function UserProfile({ user }: UserProfileProps) {
   if (!user) return null; // Do not render if user is null
 
   return (
-    <div className="mr-6">
+    <div className="flex w-[25vw] items-center justify-end">
       <DropdownMenu>
         <DropdownMenuTrigger className="h-10 w-10 rounded-[100%] overflow-hidden p-0 border-0 flex items-center justify-center">
           <img

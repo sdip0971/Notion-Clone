@@ -21,13 +21,13 @@ export async function  createDocument(userid:string): Promise<{DocumentId: strin
       throw new Error("Failed to initialize Firestore Admin SDK");
     }
    
-    const doccollectionref = await admindb.collection("documents");
+    const doccollectionref = admindb.collection("documents");
     const docref  = await doccollectionref.add({
       userID: userid,
       title: "Untitled",
       content: "",
       createdAt: new Date(),
-      updatedAt: new Date(),
+      updatedAt: new Date()
     
     });
     await admindb.collection("users").doc(userid).collection("rooms").doc(docref.id).set({

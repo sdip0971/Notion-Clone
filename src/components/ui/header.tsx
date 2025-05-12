@@ -24,7 +24,7 @@ export const Header = () => {
 
   return (
     <div className="flex mt-2 items-center justify-between">
-      <div className="flex w-full flex-col-2 justify-between items-center gap-2">
+      <div className="flex w-full ml-70 flex-col-2 justify-between items-center gap-2">
         {isLoggedIn && user ? (
           <>
             <div className="text-2xl pl-3 pr-3 text-black">
