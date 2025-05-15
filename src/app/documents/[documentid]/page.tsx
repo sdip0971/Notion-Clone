@@ -1,14 +1,16 @@
-import React from 'react';
-import { Input } from "@/components/ui/input";
-import { updateDocumenttitle } from '@/utils/updatedocument';
-import { last } from 'lodash';
-import DocumentPage from '@/components/ui/documentPage';
 
-function Page({ params }: { params: { documentid: string } }) {
-    const { documentid } = params; 
-    return (
-        <DocumentPage documentid={params.documentid} />
-    );
+import React from "react";
+import DocumentPage from "@/components/ui/documentPage";
+
+export const dynamic = "force-dynamic";
+
+export default function Page({ params }: { params: { documentid: string } }) {
+  // Ensure `documentid` is defined
+  if (!params || !params.documentid) {
+    return <div>Error: Document ID is missing!</div>;
+  }
+
+  const documentid = params.documentid;
+
+  return <DocumentPage documentid={documentid} />;
 }
-
-export default Page;

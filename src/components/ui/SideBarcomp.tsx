@@ -44,6 +44,11 @@ import { useCollection } from 'react-firebase-hooks/firestore';
 import { userstore } from '../context/userstore';
 import { Query } from 'firebase-admin/firestore';
 import Sidebaroptions from './Sidebaroptions';
+import { useMemo } from 'react';
+import isEqual from "lodash/isEqual";
+import { isEqualWith } from 'lodash';
+import { editorstore } from '../context/editorstore';
+import { useSetDocuments } from '../context/setDocuments';
 const items = [
   {
     title: "New Document",
@@ -64,29 +69,24 @@ function SideBarcomp() {
     owner: [],
     editor: [],
   });
-
+  
   const user = userstore((state) => state.user);
   const [isUserFetched, setIsUserFetched] = useState(false);
   console.log("User:", user);
-
+  useSetDocuments()
+  const documents = editorstore((state)=>state.documents)
+  
+  console.log("documentdata",documents)
 
 const queryRef = user
   ? query(collectionGroup(db, "rooms"), where("userID", "==", user.id))
   : null;
 
-const documentquery = user
-  ? query(collectionGroup(db, "documents"), where("userID", "==", user.id))
-  : null;
 
 const [data = { docs: [] }, loading, error] = useCollection(queryRef);
-const [documentdata = { docs: [] }, documentloading, documenterror] = useCollection(documentquery);
 
-useEffect(() => {
-  if (!data) {
-    return;
-  }
-
-  const grouped = data.docs.reduce<{
+const grouped = useMemo(()=>{
+  return data.docs.reduce<{
     owner: roomDocument[];
     editor: roomDocument[];
   }>(
@@ -103,7 +103,18 @@ useEffect(() => {
     },
     { owner: [], editor: [] }
   );
-  setGroupedData(grouped);
+
+},[data])
+
+useEffect(() => {
+  if (!data) {
+    return;
+  }
+  if (
+    !isEqual(groupeddata,grouped)
+  ) {
+    setGroupedData(grouped);
+  }
 }, [data]);
 
 if (!user) {

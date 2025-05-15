@@ -16,9 +16,8 @@ import { User } from 'next-auth';
 function Sidebaroptions({ sidebaroptions}: { sidebaroptions: SidebaroptionsProps,}) {
     // const [data, loading, error] = useDocumentData(doc(db,"documents",userID));
   const { role, userID, roomId }: SidebaroptionsProps = sidebaroptions;
-  const [data, loading, error] = useDocumentData(doc(db, "documents", userID)); 
   
-
+  const [data, loading, error] = useDocumentData(doc(db,"documents", roomId));
   // console.log("Document Data:", data);
   const pathname = usePathname();
   console.log("pathname", pathname);
@@ -36,7 +35,7 @@ function Sidebaroptions({ sidebaroptions}: { sidebaroptions: SidebaroptionsProps
             <div className="text-xs text-gray-500">{userID}</div>
           </div>
           <div className="ml-auto">
-            <div className="text-xs text-gray-500">{roomId}</div>
+            <div className="text-xs text-gray-500">{data?.title ?? "Untitled"}</div>
           </div>
         </div>
       </Link>

@@ -44,7 +44,7 @@ export const CreatedocumentProvider = ({
         }
 
 
-        router.push(`/document/${DocumentId}`);
+        router.push(`/documents/${DocumentId}`);
       } catch (error: any) {
         console.error("Error in createdocument:", error);
         setErrorMsg(error.message || "An unexpected error occurred");

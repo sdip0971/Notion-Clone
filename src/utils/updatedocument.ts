@@ -9,6 +9,9 @@ const updatetitle = async (docref: any, title: string) => {
 };
 export const updateDocumenttitle = debounce((title: string,docId:string) => {
     const docref = doc(db, "documents", docId);
-    console.log("🔥 docId type:", typeof docId, "value:", docId);
+    if (title.trim() === "") {
+      // Don't update if title is empty
+      return;
+    }
     updatetitle(docref, title);
 }, 1000);
