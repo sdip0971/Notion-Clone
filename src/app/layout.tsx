@@ -5,6 +5,7 @@ import Provider from "./provider";
 import { Header } from "@/components/ui/header";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import SideBarcomp from "@/components/ui/SideBarcomp";
+
 CreatedocumentProvider
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,21 +35,22 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Provider>
-          <UserAcc />
-          <Header />
-          <CreatedocumentProvider>
-            <SidebarProvider>
-              <div className="flex flex-row">
-                <SheetComp />
-                <SidebarTrigger className="hidden md:inline" />
+    
+          <Provider>
+            <UserAcc />
+            <Header />
+            <CreatedocumentProvider>
+              <SidebarProvider>
+                <div className="flex flex-row">
+                  <SheetComp />
+                  <SidebarTrigger className="hidden md:inline" />
 
-                <SideBarcomp />
-                {children}
-              </div>
-            </SidebarProvider>
-          </CreatedocumentProvider>
-        </Provider>
+                  <SideBarcomp />
+                  {children}
+                </div>
+              </SidebarProvider>
+            </CreatedocumentProvider>
+          </Provider>
       </body>
     </html>
   );

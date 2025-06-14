@@ -17,7 +17,7 @@ const documentvalidation  = z.object({
     createdAt: z.date(),
     updatedAt: z.date(),
   });
-
+import { useMyPresence, useOthers } from "@liveblocks/react";
 function DocumentPage({ documentid }: { documentid: string }) {
     const user = userstore((state) => state.user);
     const [data, loading, error] = useDocumentData(doc(db,"documents", documentid));

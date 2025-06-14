@@ -7,7 +7,7 @@
         image?: string | null;
         sub?: string | null;
     }
-    interface   Session {
+    interface Session {
         user: {
             id: string;
             name?: string | null;

@@ -28,14 +28,13 @@ function Sidebaroptions({ sidebaroptions}: { sidebaroptions: SidebaroptionsProps
     <div>
       <Link href={`/documents/${roomId}`}>
         <div
-          className={`flex items-center p-2 hover:bg-gray-200 rounded-md ${isActiveClass} `}
+          className={`flex items-center p-2 gap-2 overflow-scroll hover:bg-gray-200 rounded-md ${isActiveClass} `}
         >
           <div className="flex flex-col">
-            <div className="text-sm font-medium text-gray-900">{}</div>
-            <div className="text-xs text-gray-500">{userID}</div>
+            <div className="text-xs text-gray-500 ">{userID}</div>
           </div>
           <div className="ml-auto">
-            <div className="text-xs text-gray-500">{data?.title ?? "Untitled"}</div>
+            <div className="text-xs text-gray-500 truncate">{data?.title ?? "Untitled"}</div>
           </div>
         </div>
       </Link>

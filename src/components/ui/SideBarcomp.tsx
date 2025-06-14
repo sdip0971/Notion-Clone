@@ -13,6 +13,7 @@ import {
 
   
 } from "@/components/ui/sidebar";
+import LoadingSpinner from './LoadingSpinner';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -117,28 +118,20 @@ useEffect(() => {
   }
 }, [data]);
 
-if (!user) {
-  return (
-    <div className="flex justify-center items-center h-screen">
-      <svg
-        className="animate-spin h-10 w-10 text-gray-200"
-        viewBox="3 3 18 18"
-      ></svg>
-      <p className="text-gray-500">Loading user...</p>
-    </div>
-  );
-}
+// if (!user) {
+//   return (
+//     <div className="flex justify-center items-center h-screen">
+//       <svg
+//         className="animate-spin h-10 w-10 text-gray-200"
+//         viewBox="3 3 18 18"
+//       ></svg>
+//       <p className="text-gray-500">Loading user...</p>
+//     </div>
+//   );
+// }
 
 if (loading) {
-  return (
-    <div className="flex justify-center items-center h-screen">
-      <svg
-        className="animate-spin h-10 w-10 text-gray-200"
-        viewBox="3 3 18 18"
-      ></svg>
-      <p className="text-gray-500">Fetching documents...</p>
-    </div>
-  );
+  return <LoadingSpinner  />;
 }
 
 if (error) {
@@ -161,7 +154,7 @@ return (
                     <item.icon />
                     <button
                       onClick={createdocument}
-                      className="cursor-pointer"
+                      className="cursor-pointer truncate"
                     >
                       {item.title}
                     </button>
